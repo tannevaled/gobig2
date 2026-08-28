@@ -24,9 +24,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/dkrisman/gobig2"
-	"github.com/dkrisman/gobig2/internal/page"
-	"github.com/dkrisman/gobig2/internal/segment"
+	"github.com/tannevaled/gobig2"
+	"github.com/tannevaled/gobig2/internal/page"
+	"github.com/tannevaled/gobig2/internal/segment"
 )
 
 // version is the CLI version. `var` so Taskfile.yml `build:release`

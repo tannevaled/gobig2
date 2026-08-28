@@ -4,8 +4,8 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/dkrisman/gobig2/internal/errs"
-	"github.com/dkrisman/gobig2/internal/segment"
+	"github.com/tannevaled/gobig2/internal/errs"
+	"github.com/tannevaled/gobig2/internal/segment"
 )
 
 func TestValidSegmentTypeRespectsCanonicalTable(t *testing.T) {

@@ -7,12 +7,12 @@
 package segment
 
 import (
-	"github.com/dkrisman/gobig2/internal/arith"
-	"github.com/dkrisman/gobig2/internal/halftone"
-	"github.com/dkrisman/gobig2/internal/huffman"
-	"github.com/dkrisman/gobig2/internal/page"
-	"github.com/dkrisman/gobig2/internal/state"
-	"github.com/dkrisman/gobig2/internal/symbol"
+	"github.com/tannevaled/gobig2/internal/arith"
+	"github.com/tannevaled/gobig2/internal/halftone"
+	"github.com/tannevaled/gobig2/internal/huffman"
+	"github.com/tannevaled/gobig2/internal/page"
+	"github.com/tannevaled/gobig2/internal/state"
+	"github.com/tannevaled/gobig2/internal/symbol"
 )
 
 // SegmentFlags holds the segment-header flag bits.

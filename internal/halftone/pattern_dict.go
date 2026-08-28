@@ -4,7 +4,7 @@
 // shared package.
 package halftone
 
-import "github.com/dkrisman/gobig2/internal/page"
+import "github.com/tannevaled/gobig2/internal/page"
 
 // PatternDict is a pattern dictionary.
 type PatternDict struct {

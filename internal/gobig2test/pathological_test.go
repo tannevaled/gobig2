@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	gobig2 "github.com/dkrisman/gobig2"
+	gobig2 "github.com/tannevaled/gobig2"
 
-	"github.com/dkrisman/gobig2/internal/bio"
-	"github.com/dkrisman/gobig2/internal/segment"
+	"github.com/tannevaled/gobig2/internal/bio"
+	"github.com/tannevaled/gobig2/internal/segment"
 )
 
 // TestAggregateInputSymbolsBudget asserts aggregate SBSYMS /

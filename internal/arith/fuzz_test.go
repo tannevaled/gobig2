@@ -3,7 +3,7 @@ package arith
 import (
 	"testing"
 
-	"github.com/dkrisman/gobig2/internal/bio"
+	"github.com/tannevaled/gobig2/internal/bio"
 )
 
 // FuzzDecoder feeds random bytes to MQ decoder and integer/IAID

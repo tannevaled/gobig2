@@ -3,7 +3,7 @@ package huffman
 import (
 	"testing"
 
-	"github.com/dkrisman/gobig2/internal/bio"
+	"github.com/tannevaled/gobig2/internal/bio"
 )
 
 // TestDecodeAValue32BitOffsetRejected pins: 32-bit RANGELEN line

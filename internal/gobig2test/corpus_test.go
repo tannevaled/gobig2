@@ -16,7 +16,7 @@ import (
 	"testing"
 	"time"
 
-	gobig2 "github.com/dkrisman/gobig2"
+	gobig2 "github.com/tannevaled/gobig2"
 )
 
 // External corpora env-gated. ITU-T T.88 conformance data too large

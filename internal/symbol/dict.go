@@ -1,8 +1,8 @@
 package symbol
 
 import (
-	"github.com/dkrisman/gobig2/internal/arith"
-	"github.com/dkrisman/gobig2/internal/page"
+	"github.com/tannevaled/gobig2/internal/arith"
+	"github.com/tannevaled/gobig2/internal/page"
 )
 
 // Dict is a symbol dictionary.

@@ -4,13 +4,13 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/dkrisman/gobig2/internal/arith"
-	"github.com/dkrisman/gobig2/internal/bio"
-	"github.com/dkrisman/gobig2/internal/errs"
-	"github.com/dkrisman/gobig2/internal/huffman"
-	"github.com/dkrisman/gobig2/internal/page"
-	"github.com/dkrisman/gobig2/internal/refinement"
-	"github.com/dkrisman/gobig2/internal/state"
+	"github.com/tannevaled/gobig2/internal/arith"
+	"github.com/tannevaled/gobig2/internal/bio"
+	"github.com/tannevaled/gobig2/internal/errs"
+	"github.com/tannevaled/gobig2/internal/huffman"
+	"github.com/tannevaled/gobig2/internal/page"
+	"github.com/tannevaled/gobig2/internal/refinement"
+	"github.com/tannevaled/gobig2/internal/state"
 )
 
 // errTRDAllocFailed is the resource-budget rejection both TRD

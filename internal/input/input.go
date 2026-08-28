@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/dkrisman/gobig2/internal/bio"
-	"github.com/dkrisman/gobig2/internal/errs"
+	"github.com/tannevaled/gobig2/internal/bio"
+	"github.com/tannevaled/gobig2/internal/errs"
 )
 
 // MaxBytes caps the physical bytes a single JBIG2 input can

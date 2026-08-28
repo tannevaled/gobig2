@@ -5,12 +5,12 @@ import (
 	"errors"
 	"testing"
 
-	gobig2 "github.com/dkrisman/gobig2"
+	gobig2 "github.com/tannevaled/gobig2"
 
-	"github.com/dkrisman/gobig2/internal/halftone"
-	"github.com/dkrisman/gobig2/internal/page"
-	"github.com/dkrisman/gobig2/internal/segment"
-	"github.com/dkrisman/gobig2/internal/symbol"
+	"github.com/tannevaled/gobig2/internal/halftone"
+	"github.com/tannevaled/gobig2/internal/page"
+	"github.com/tannevaled/gobig2/internal/segment"
+	"github.com/tannevaled/gobig2/internal/symbol"
 )
 
 func TestDefaultLimitsMatchPackageVars(t *testing.T) {

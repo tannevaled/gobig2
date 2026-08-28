@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/dkrisman/gobig2/internal/errs"
-	"github.com/dkrisman/gobig2/internal/segment"
+	"github.com/tannevaled/gobig2/internal/errs"
+	"github.com/tannevaled/gobig2/internal/segment"
 )
 
 // Magic is the standalone JBIG2 file-header signature from T.88 Annex E.

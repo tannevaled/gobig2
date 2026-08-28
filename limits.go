@@ -1,11 +1,11 @@
 package gobig2
 
 import (
-	"github.com/dkrisman/gobig2/internal/arith"
-	"github.com/dkrisman/gobig2/internal/halftone"
-	"github.com/dkrisman/gobig2/internal/page"
-	"github.com/dkrisman/gobig2/internal/segment"
-	"github.com/dkrisman/gobig2/internal/symbol"
+	"github.com/tannevaled/gobig2/internal/arith"
+	"github.com/tannevaled/gobig2/internal/halftone"
+	"github.com/tannevaled/gobig2/internal/page"
+	"github.com/tannevaled/gobig2/internal/segment"
+	"github.com/tannevaled/gobig2/internal/symbol"
 )
 
 // Limits bundles resource caps the codec consults when

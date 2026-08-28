@@ -1,8 +1,8 @@
 package generic
 
 import (
-	"github.com/dkrisman/gobig2/internal/arith"
-	"github.com/dkrisman/gobig2/internal/state"
+	"github.com/tannevaled/gobig2/internal/arith"
+	"github.com/tannevaled/gobig2/internal/state"
 )
 
 var (

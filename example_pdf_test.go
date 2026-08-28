@@ -6,7 +6,7 @@ import (
 	"image"
 	"os"
 
-	gobig2 "github.com/dkrisman/gobig2"
+	gobig2 "github.com/tannevaled/gobig2"
 )
 
 // ExampleNewDecoderEmbedded_pdf shows the canonical PDF-reader

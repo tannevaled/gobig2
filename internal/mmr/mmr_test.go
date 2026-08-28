@@ -4,9 +4,9 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/dkrisman/gobig2/internal/bio"
-	"github.com/dkrisman/gobig2/internal/errs"
-	"github.com/dkrisman/gobig2/internal/page"
+	"github.com/tannevaled/gobig2/internal/bio"
+	"github.com/tannevaled/gobig2/internal/errs"
+	"github.com/tannevaled/gobig2/internal/page"
 )
 
 // TestUncompressZeroDimensions pins that halftone-region MMR

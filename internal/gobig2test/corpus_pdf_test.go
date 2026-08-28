@@ -14,7 +14,7 @@ import (
 	"testing"
 	"time"
 
-	gobig2 "github.com/dkrisman/gobig2"
+	gobig2 "github.com/tannevaled/gobig2"
 )
 
 // PDF-embedded JBIG2 streams have no file header - PDF §7.4.7

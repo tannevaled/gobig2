@@ -1,4 +1,4 @@
-module github.com/dkrisman/gobig2
+module github.com/tannevaled/gobig2
 
 go 1.25
 

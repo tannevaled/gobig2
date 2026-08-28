@@ -15,8 +15,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dkrisman/gobig2"
-	"github.com/dkrisman/gobig2/internal/page"
+	"github.com/tannevaled/gobig2"
+	"github.com/tannevaled/gobig2/internal/page"
 )
 
 // fixtureSamplePath points at the committed PDF-extracted JBIG2

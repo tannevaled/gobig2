@@ -10,7 +10,7 @@ package arith
 import (
 	"errors"
 
-	"github.com/dkrisman/gobig2/internal/bio"
+	"github.com/tannevaled/gobig2/internal/bio"
 )
 
 // defaultAValue is the default A register value.

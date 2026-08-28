@@ -3,8 +3,8 @@ package symbol
 import (
 	"testing"
 
-	"github.com/dkrisman/gobig2/internal/arith"
-	"github.com/dkrisman/gobig2/internal/page"
+	"github.com/tannevaled/gobig2/internal/arith"
+	"github.com/tannevaled/gobig2/internal/page"
 )
 
 // TestDictBasics covers the Dict data structure end-to-end.

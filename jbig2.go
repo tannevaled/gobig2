@@ -124,10 +124,10 @@ import (
 	"image/color"
 	"io"
 
-	"github.com/dkrisman/gobig2/internal/input"
-	"github.com/dkrisman/gobig2/internal/page"
-	"github.com/dkrisman/gobig2/internal/probe"
-	"github.com/dkrisman/gobig2/internal/segment"
+	"github.com/tannevaled/gobig2/internal/input"
+	"github.com/tannevaled/gobig2/internal/page"
+	"github.com/tannevaled/gobig2/internal/probe"
+	"github.com/tannevaled/gobig2/internal/segment"
 )
 
 // Version is the gobig2 module version. Bumped at release time

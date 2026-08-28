@@ -4,12 +4,12 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/dkrisman/gobig2/internal/arith"
-	"github.com/dkrisman/gobig2/internal/bio"
-	"github.com/dkrisman/gobig2/internal/errs"
-	"github.com/dkrisman/gobig2/internal/generic"
-	"github.com/dkrisman/gobig2/internal/page"
-	"github.com/dkrisman/gobig2/internal/state"
+	"github.com/tannevaled/gobig2/internal/arith"
+	"github.com/tannevaled/gobig2/internal/bio"
+	"github.com/tannevaled/gobig2/internal/errs"
+	"github.com/tannevaled/gobig2/internal/generic"
+	"github.com/tannevaled/gobig2/internal/page"
+	"github.com/tannevaled/gobig2/internal/state"
 )
 
 // PDDProc is the pattern-dictionary decoding procedure.

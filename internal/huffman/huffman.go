@@ -8,7 +8,7 @@ package huffman
 import (
 	"sync"
 
-	"github.com/dkrisman/gobig2/internal/bio"
+	"github.com/tannevaled/gobig2/internal/bio"
 )
 
 // OOB is the out-of-bound sentinel that DecodeAValue returns when

@@ -1,3 +1,14 @@
+> **This is a fork of [dkrisman/gobig2](https://github.com/dkrisman/gobig2), not a competing project.**
+>
+> It exists so the go-gfx and go-pdfkit fleets can depend on a *tagged* version carrying one fix while that fix is offered upstream:
+>
+> - **[dkrisman/gobig2#2](https://github.com/dkrisman/gobig2/pull/2)** — the per-symbol pixel cap defaulted below what real scanned documents contain, refusing 7 of 403 JBIG2 streams taken from public Internet Archive scans. It is raised to the aggregate cap, which already bounds the work.
+> - **[dkrisman/gobig2#1](https://github.com/dkrisman/gobig2/issues/1)** — the remaining report: `Limits.Apply()` writes process-global state, so a library cannot use it.
+>
+> The module path is renamed only so it can be imported. **Use upstream if you can.** When the fix lands there and upstream publishes a tag, this fork goes away.
+>
+> All credit for the decoder is upstream's. Measured against poppler over 403 real streams, it is the only pure-Go JBIG2 decoder of four tested that never decoded a stream wrongly.
+
 # gobig2
 
 [![CI](https://github.com/dkrisman/gobig2/actions/workflows/ci.yml/badge.svg)](https://github.com/dkrisman/gobig2/actions/workflows/ci.yml)

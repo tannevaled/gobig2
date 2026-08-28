@@ -9,7 +9,7 @@ import (
 	"os"
 	"testing"
 
-	gobig2 "github.com/dkrisman/gobig2"
+	gobig2 "github.com/tannevaled/gobig2"
 )
 
 // Tests exercise public gobig2.Decoder entry points corpus tests

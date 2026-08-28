@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	gobig2 "github.com/dkrisman/gobig2"
+	gobig2 "github.com/tannevaled/gobig2"
 )
 
 // FuzzNewDecoder feeds random bytes to auto-detect entry and

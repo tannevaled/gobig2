@@ -1,6 +1,6 @@
 package gobig2
 
-import "github.com/dkrisman/gobig2/internal/errs"
+import "github.com/tannevaled/gobig2/internal/errs"
 
 // Sentinel errors for `errors.Is` classification. Every
 // decode/parse failure from public Decoder API wraps one of

@@ -11,7 +11,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/dkrisman/gobig2"
+	"github.com/tannevaled/gobig2"
 )
 
 // Synthesizing a minimal valid PDF inline lets extractor tests

@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/dkrisman/gobig2/internal/bio"
+	"github.com/tannevaled/gobig2/internal/bio"
 )
 
 // TestClampedIaidCodeLen pins SBSYMCODELEN clamping math without

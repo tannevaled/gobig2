@@ -7,8 +7,8 @@ import (
 	"math"
 	"testing"
 
-	"github.com/dkrisman/gobig2/internal/errs"
-	"github.com/dkrisman/gobig2/internal/page"
+	"github.com/tannevaled/gobig2/internal/errs"
+	"github.com/tannevaled/gobig2/internal/page"
 )
 
 // TestParseSegmentHeaderClassifiesMidHeaderTruncations pins

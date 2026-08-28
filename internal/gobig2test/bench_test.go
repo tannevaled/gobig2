@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	gobig2 "github.com/dkrisman/gobig2"
+	gobig2 "github.com/tannevaled/gobig2"
 )
 
 // PDF-reader hot-path benches. Two patterns:

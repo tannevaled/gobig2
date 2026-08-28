@@ -5,7 +5,7 @@ import (
 	"io"
 	"testing"
 
-	"github.com/dkrisman/gobig2/internal/errs"
+	"github.com/tannevaled/gobig2/internal/errs"
 )
 
 func TestReadBoundedCap(t *testing.T) {
