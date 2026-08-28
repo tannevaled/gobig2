@@ -50,12 +50,31 @@ const DefaultMaxRefaggninst uint32 = 1024
 // then iterate generic-region template over every pixel - 16 MP
 // "symbol" = ~10 s CPU on dev VM at default 256 MP page cap.
 //
-// Real glyphs tens of pixels per side; 4 MP (~2K x 2K) two
-// orders past legitimate use, well below page cap. Set 0 to disable.
+// Not every large symbol is adversarial. "Real glyphs tens of
+// pixels per side" does not hold across real scanned documents:
+// some encoders emit a page-sized region as ONE symbol, and 7 of
+// 403 JBIG2 streams taken from public Internet Archive scans need
+// between 7 and 8 MP for a single symbol. At 4 MP they are refused;
+// poppler decodes all of them at its own defaults.
+//
+// The default is therefore MaxSymbolDictPixels, and that costs
+// nothing. Total work in one dictionary is already bounded by the
+// aggregate cap, which is charged for every symbol a few lines
+// below this check: a dictionary cannot spend more than
+// MaxSymbolDictPixels however it splits it up. Capping ONE symbol
+// lower than the aggregate forbids a SHAPE, not an amount of work,
+// so raising it to the aggregate widens no worst case. The
+// adversarial 16 MP symbol that motivated this cap is stopped by
+// the aggregate check, on the very next statement.
+//
+// Set 0 to disable.
 var MaxSymbolPixels uint64 = DefaultMaxSymbolPixels
 
 // DefaultMaxSymbolPixels is the codec's stock cap for [MaxSymbolPixels].
-const DefaultMaxSymbolPixels uint64 = 4 * 1024 * 1024
+// It is [DefaultMaxSymbolDictPixels]: a lower per-symbol cap would
+// forbid shapes real encoders emit without bounding any work the
+// aggregate cap does not already bound.
+const DefaultMaxSymbolPixels uint64 = DefaultMaxSymbolDictPixels
 
 // MaxSymbolDictPixels caps sum of SYMWIDTH x HCHEIGHT across
 // every symbol in one SDDProc call. Complements per-symbol

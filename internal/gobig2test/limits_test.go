@@ -243,3 +243,25 @@ func TestLimitsRejectsHighPixelsPerByteRatio(t *testing.T) {
 		t.Error("gobig2.Decode accepted page-info despite tight MaxPixelsPerByte")
 	}
 }
+
+func TestPerSymbolCapDoesNotBiteBeforeTheAggregateOne(t *testing.T) {
+	// The per-symbol cap and the aggregate cap bound the same thing: pixels
+	// decoded in one symbol dictionary. The aggregate is charged for every
+	// symbol, so a dictionary cannot spend more than MaxSymbolDictPixels
+	// however it splits the work up.
+	//
+	// A per-symbol cap BELOW the aggregate therefore bounds no work the
+	// aggregate does not already bound. All it does is forbid a shape — one
+	// big symbol rather than several — and real encoders emit that shape:
+	// some put a page-sized region in a single symbol, and 7 of 403 JBIG2
+	// streams taken from public scanned documents need between 7 and 8 MP for
+	// one symbol. poppler reads all of them at its own defaults.
+	//
+	// So the two defaults are equal, and this says so, because setting the
+	// per-symbol one lower again would silently refuse real documents.
+	if symbol.DefaultMaxSymbolPixels != symbol.DefaultMaxSymbolDictPixels {
+		t.Errorf("per-symbol default %d, aggregate default %d: a per-symbol cap "+
+			"below the aggregate refuses documents without bounding work",
+			symbol.DefaultMaxSymbolPixels, symbol.DefaultMaxSymbolDictPixels)
+	}
+}
