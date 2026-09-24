@@ -83,15 +83,34 @@ const DefaultMaxSymbolPixels uint64 = DefaultMaxSymbolDictPixels
 // hundreds of MP of template-loop work (one fuzz seed: 198 MP
 // across 538 symbols, ~1.7 s on dev VM).
 //
-// Real text-heavy dicts top out at a few MP total; 16 MP
-// comfortably above legitimate use (600 DPI A4 is ~33 MP total,
-// dict carries only unique glyphs) and bounds adversarial decode
-// at ~135 ms vs uncapped 1.7 s. Set 0 to disable.
+// The 16 MP this defaulted to rests on "dict carries only unique
+// glyphs", and that does not hold. Of 866 JBIG2 streams taken from
+// the /Mask and /SMask entries of public scans, 3 are refused at
+// 16 MP, and what they need is SEVERAL TIMES their own page:
+//
+//	insectlivesastol00simp   32 MP aggregate,  7 MP page, 122 ms
+//	iowabirdlife62iowab      20 MP aggregate, 12 MP page,  44 ms
+//	b21988274                64 MP aggregate,  6 MP page, 146 ms
+//
+// Those encoders emit thousands of near-duplicate symbols off a
+// noisy scan rather than one per distinct glyph, so the aggregate
+// is a multiple of the page and not a fraction of it. poppler
+// decodes all three at its own defaults; at 16 MP the ink layer is
+// dropped and the page is drawn from its background alone, which
+// on one of them is 59% of pixels away from poppler.
+//
+// 64 MP takes all three, and 96 and 128 MP take nothing further:
+// the population is exhausted at 4x. What it costs is the same
+// factor of adversarial decode, ~540 ms against the ~135 ms
+// above, and the seed that motivated this cap -- 198 MP across
+// 538 symbols -- is REFUSED at 64 MP as it was at 16.
+//
+// Set 0 to disable.
 var MaxSymbolDictPixels uint64 = DefaultMaxSymbolDictPixels
 
 // DefaultMaxSymbolDictPixels is the codec's stock cap for
 // [MaxSymbolDictPixels].
-const DefaultMaxSymbolDictPixels uint64 = 16 * 1024 * 1024
+const DefaultMaxSymbolDictPixels uint64 = 64 * 1024 * 1024
 
 // NewSDDProc creates a new symbol-dictionary decoder.
 func NewSDDProc() *SDDProc {
