@@ -265,3 +265,30 @@ func TestPerSymbolCapDoesNotBiteBeforeTheAggregateOne(t *testing.T) {
 			symbol.DefaultMaxSymbolPixels, symbol.DefaultMaxSymbolDictPixels)
 	}
 }
+
+// TestTheAggregateCapIsBoundedAtBothEnds. The aggregate is now the only cap
+// that bounds work in a symbol dictionary, since the per-symbol one was raised
+// to meet it. A single number carries both jobs, so both ends are guarded here
+// and each end has a measurement behind it rather than a preference.
+func TestTheAggregateCapIsBoundedAtBothEnds(t *testing.T) {
+	const mp = 1024 * 1024
+
+	// The floor. Of 866 JBIG2 streams taken from the /Mask and /SMask entries
+	// of public scans, three need more than 16 MP, and the largest needs 64.
+	// Below this they are refused, their page's ink layer is dropped, and one
+	// of them is drawn 59% of pixels away from poppler -- which reads all
+	// three at its own defaults.
+	if symbol.DefaultMaxSymbolDictPixels < 64*mp {
+		t.Errorf("aggregate default %d MP is below 64 MP: three real scanned "+
+			"documents are refused there, and poppler reads them",
+			symbol.DefaultMaxSymbolDictPixels/mp)
+	}
+
+	// The ceiling. The seed that motivated this cap is 198 MP across 538
+	// symbols, ~1.7 s of template-loop work. Raising the default past it would
+	// give up the only thing the cap does.
+	if symbol.DefaultMaxSymbolDictPixels >= 198*mp {
+		t.Errorf("aggregate default %d MP is at or above the 198 MP fuzz seed "+
+			"this cap exists to refuse", symbol.DefaultMaxSymbolDictPixels/mp)
+	}
+}
