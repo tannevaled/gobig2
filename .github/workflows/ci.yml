@@ -132,12 +132,27 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { goarch: riscv64, qemu: qemu-riscv64-static }
-          - { goarch: loong64, qemu: qemu-loongarch64-static }
-          - { goarch: ppc64le, qemu: qemu-ppc64le-static }
-          - { goarch: s390x,   qemu: qemu-s390x-static }
-          - { goarch: "386",   qemu: qemu-i386-static }
-          - { goarch: arm,     qemu: qemu-arm-static }
+          - { goarch: riscv64, exec: "-exec=qemu-riscv64-static" }
+          - { goarch: loong64, exec: "-exec=qemu-loongarch64-static" }
+          - { goarch: ppc64le, exec: "-exec=qemu-ppc64le-static" }
+          - { goarch: s390x,   exec: "-exec=qemu-s390x-static" }
+          # 386 runs with NO emulator: a 386 ELF executes directly on the
+          # x86-64 runner. That is not a convenience, it is a correctness
+          # requirement. Measured on one commit of go-gfx/gfx, eight identical
+          # lanes each:
+          #
+          #   under qemu-i386                    5 failures out of 8
+          #   under qemu-i386, asyncpreemptoff=1 0 out of 8
+          #   native on the same runner          0 out of 8
+          #   under qemu-arm                     0 out of 8
+          #
+          # Each failure landed on a DIFFERENT input although the seed is
+          # fixed, and the wrong value was a sign flip rather than a rounding
+          # difference. qemu-i386 loses the guest's floating-point state across
+          # the signal Go delivers for asynchronous preemption. Emulating 386
+          # here would buy nothing and cost a lane that goes red at random.
+          - { goarch: "386",   exec: "" }
+          - { goarch: arm,     exec: "-exec=qemu-arm-static" }
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-go@v7
@@ -145,4 +160,4 @@ jobs:
           go-version-file: go.mod
       - run: sudo apt-get update && sudo apt-get install -y qemu-user-static
       - name: Test under qemu (${{ matrix.goarch }})
-        run: GOARCH=${{ matrix.goarch }} go test -exec=${{ matrix.qemu }} ./...
+        run: GOARCH=${{ matrix.goarch }} go test ${{ matrix.exec }} ./...
