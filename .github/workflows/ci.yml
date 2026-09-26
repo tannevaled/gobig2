@@ -126,16 +126,16 @@ jobs:
   # poppler and pdfium test on none of the four 64-bit arches; 32-bit ARM they
   # do hold, and we did not.
   arch-qemu:
-    name: arch ${{ matrix.goarch }} (qemu)
+    name: arch ${{ matrix.goarch }} (${{ matrix.via }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         include:
-          - { goarch: riscv64, exec: "-exec=qemu-riscv64-static" }
-          - { goarch: loong64, exec: "-exec=qemu-loongarch64-static" }
-          - { goarch: ppc64le, exec: "-exec=qemu-ppc64le-static" }
-          - { goarch: s390x,   exec: "-exec=qemu-s390x-static" }
+          - { goarch: riscv64, exec: "-exec=qemu-riscv64-static", via: qemu }
+          - { goarch: loong64, exec: "-exec=qemu-loongarch64-static", via: qemu }
+          - { goarch: ppc64le, exec: "-exec=qemu-ppc64le-static", via: qemu }
+          - { goarch: s390x,   exec: "-exec=qemu-s390x-static", via: qemu }
           # 386 runs with NO emulator: a 386 ELF executes directly on the
           # x86-64 runner. That is not a convenience, it is a correctness
           # requirement. Measured on one commit of go-gfx/gfx, eight identical
@@ -151,8 +151,8 @@ jobs:
           # difference. qemu-i386 loses the guest's floating-point state across
           # the signal Go delivers for asynchronous preemption. Emulating 386
           # here would buy nothing and cost a lane that goes red at random.
-          - { goarch: "386",   exec: "" }
-          - { goarch: arm,     exec: "-exec=qemu-arm-static" }
+          - { goarch: "386",   exec: "", via: native }
+          - { goarch: arm,     exec: "-exec=qemu-arm-static", via: qemu }
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-go@v7
