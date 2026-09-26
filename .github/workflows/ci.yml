@@ -116,3 +116,33 @@ jobs:
 
       - name: govulncheck
         run: govulncheck ./...
+
+  # Cross-compiling proves the code COMPILES for an architecture; it does not
+  # prove it computes the right answer there. JBIG2 is decoded bit by bit,
+  # and its symbol dictionaries are budgeted by multiplying a width by a height.
+  #
+  # s390x is BIG-ENDIAN and 386/arm are 32-bit, so between them these lanes
+  # cover both assumptions a byte-stream reader can carry without knowing it.
+  # poppler and pdfium test on none of the four 64-bit arches; 32-bit ARM they
+  # do hold, and we did not.
+  arch-qemu:
+    name: arch ${{ matrix.goarch }} (qemu)
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { goarch: riscv64, qemu: qemu-riscv64-static }
+          - { goarch: loong64, qemu: qemu-loongarch64-static }
+          - { goarch: ppc64le, qemu: qemu-ppc64le-static }
+          - { goarch: s390x,   qemu: qemu-s390x-static }
+          - { goarch: "386",   qemu: qemu-i386-static }
+          - { goarch: arm,     qemu: qemu-arm-static }
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+      - run: sudo apt-get update && sudo apt-get install -y qemu-user-static
+      - name: Test under qemu (${{ matrix.goarch }})
+        run: GOARCH=${{ matrix.goarch }} go test -exec=${{ matrix.qemu }} ./...
