@@ -161,3 +161,23 @@ jobs:
       - run: sudo apt-get update && sudo apt-get install -y qemu-user-static
       - name: Test under qemu (${{ matrix.goarch }})
         run: GOARCH=${{ matrix.goarch }} go test ${{ matrix.exec }} ./...
+
+  # Cross-compiling for darwin and windows is not running there. poppler and
+  # pdfium are tested on both, so this is not new ground -- it is ground the
+  # references hold and this repository did not: path handling, line endings and
+  # file semantics are where a Linux-only suite is quietly incomplete.
+  #
+  # The coverage gate stays on ubuntu; these two lanes only run the tests.
+  os-matrix:
+    name: test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+      - run: go test ./...
