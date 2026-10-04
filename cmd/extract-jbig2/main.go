@@ -199,7 +199,8 @@ func extractOne(pdfPath, outDir string, force bool, maxPDFBytes int64) (int, err
 				fmt.Fprintf(os.Stderr, "skipped globals: %s obj %d -> %d: %v\n",
 					pdfPath, objNum, globalsRef, err)
 			} else if err := writeOnce(
-				fmt.Sprintf("%s-obj%d.globals.jb2", base, objNum), gStream); err != nil {
+				fmt.Sprintf("%s-obj%d.globals.jb2", base, objNum), gStream,
+			); err != nil {
 				return count, err
 			}
 		}
@@ -210,9 +211,11 @@ func extractOne(pdfPath, outDir string, force bool, maxPDFBytes int64) (int, err
 		w, h := extractWidthHeight(body)
 		sidecar := fmt.Sprintf(
 			"source:    %s\nobject:    %d\ndimensions: %dx%d\nformat:    PDF-embedded JBIG2 (headerless); decode via gobig2 CLI or gobig2.NewDecoderEmbedded\n",
-			filepath.Base(pdfPath), objNum, w, h)
+			filepath.Base(pdfPath), objNum, w, h,
+		)
 		if err := writeOnce(
-			fmt.Sprintf("%s-obj%d.txt", base, objNum), []byte(sidecar)); err != nil {
+			fmt.Sprintf("%s-obj%d.txt", base, objNum), []byte(sidecar),
+		); err != nil {
 			return count, err
 		}
 		count++

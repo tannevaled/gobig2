@@ -190,7 +190,7 @@ func (bs *BitStream) ReadInteger() (uint32, error) {
 	}
 	var result uint32
 	if bs.littleEndian {
-		result = (uint32(bs.data[bs.byteIdx])) | (uint32(bs.data[bs.byteIdx+1]) << 8) | (uint32(bs.data[bs.byteIdx+2]) << 16) | (uint32(bs.data[bs.byteIdx+3]) << 24)
+		result = uint32(bs.data[bs.byteIdx]) | (uint32(bs.data[bs.byteIdx+1]) << 8) | (uint32(bs.data[bs.byteIdx+2]) << 16) | (uint32(bs.data[bs.byteIdx+3]) << 24)
 	} else {
 		result = (uint32(bs.data[bs.byteIdx]) << 24) | (uint32(bs.data[bs.byteIdx+1]) << 16) | (uint32(bs.data[bs.byteIdx+2]) << 8) | uint32(bs.data[bs.byteIdx+3])
 	}
@@ -206,7 +206,7 @@ func (bs *BitStream) ReadShortInteger() (uint16, error) {
 	}
 	var result uint16
 	if bs.littleEndian {
-		result = (uint16(bs.data[bs.byteIdx])) | (uint16(bs.data[bs.byteIdx+1]) << 8)
+		result = uint16(bs.data[bs.byteIdx]) | (uint16(bs.data[bs.byteIdx+1]) << 8)
 	} else {
 		result = (uint16(bs.data[bs.byteIdx]) << 8) | uint16(bs.data[bs.byteIdx+1])
 	}
