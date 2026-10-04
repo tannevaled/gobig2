@@ -356,14 +356,16 @@ tasks:
     # with go1.X)". Fix: `task tools` rebuilds them with current Go.
     #
     # GOTOOLCHAIN forces each `go install` to use the same Go
-    # version this project's go.mod declares (1.25.8). Without
+    # version this project's go.mod declares (1.27.1). Without
     # this, `go install` resolves the tool's own go.mod
     # constraint (which may be looser, e.g. >= 1.24) and selects
     # an older toolchain - producing tool binaries that can't
-    # scan / lint our 1.25-targeted code. Bump this string when
-    # you bump go.mod's `toolchain` directive.
+    # scan / lint our 1.27.1-targeted code. Bump this string when
+    # you bump go.mod's `go` directive -- this module has no
+    # `toolchain` line, so the `go` directive is the only thing that
+    # declares the version, and it is a patch-level one.
     env:
-      GOTOOLCHAIN: go1.25.8
+      GOTOOLCHAIN: go1.27.1
     cmds:
       - go install golang.org/x/tools/cmd/goimports@{{.GOIMPORTS_VERSION}}
       # golangci-lint v2 lives under the /v2 module path (Go's
