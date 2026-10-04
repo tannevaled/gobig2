@@ -11,9 +11,9 @@
 
 # gobig2
 
-[![CI](https://github.com/dkrisman/gobig2/actions/workflows/ci.yml/badge.svg)](https://github.com/dkrisman/gobig2/actions/workflows/ci.yml)
-[![Go Reference](https://pkg.go.dev/badge/github.com/dkrisman/gobig2.svg)](https://pkg.go.dev/github.com/dkrisman/gobig2)
-[![Go Report Card](https://goreportcard.com/badge/github.com/dkrisman/gobig2)](https://goreportcard.com/report/github.com/dkrisman/gobig2)
+[![CI](https://github.com/tannevaled/gobig2/actions/workflows/ci.yml/badge.svg)](https://github.com/tannevaled/gobig2/actions/workflows/ci.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/tannevaled/gobig2.svg)](https://pkg.go.dev/github.com/tannevaled/gobig2)
+[![Go Report Card](https://goreportcard.com/badge/github.com/tannevaled/gobig2)](https://goreportcard.com/report/github.com/tannevaled/gobig2)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
 Pure-Go decoder for ITU-T T.88 / ISO/IEC 14492 **JBIG2** streams.
@@ -71,7 +71,7 @@ task bench:cross CORPUS_DIR=./tmp/perf-corpus
 ## Install
 
 ```sh
-go get github.com/dkrisman/gobig2
+go get github.com/tannevaled/gobig2
 ```
 
 Go 1.25 toolchain or newer (see [go.mod](go.mod)).
@@ -92,7 +92,7 @@ import (
     "image"
     "os"
 
-    "github.com/dkrisman/gobig2"
+    "github.com/tannevaled/gobig2"
 )
 
 func main() {
