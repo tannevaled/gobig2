@@ -74,7 +74,7 @@ task bench:cross CORPUS_DIR=./tmp/perf-corpus
 go get github.com/dkrisman/gobig2
 ```
 
-Go 1.25 toolchain or newer (see [go.mod](go.mod)).
+Go 1.27.1 toolchain or newer (see [go.mod](go.mod)).
 
 ## Quickstart - PDF-embedded stream
 
